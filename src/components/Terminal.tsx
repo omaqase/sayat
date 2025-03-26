@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import CommandInput from './CommandInput';
 import CommandOutput from './CommandOutput';
@@ -20,13 +19,10 @@ const Terminal = () => {
     }
   };
 
-  // Simulating boot sequence
   useEffect(() => {
-    // Display welcome message after "boot sequence"
     const timer = setTimeout(() => {
       setBootSequence(false);
       
-      // Initial welcome message
       setCommands([
         {
           input: '',
@@ -194,7 +190,7 @@ const Terminal = () => {
   };
 
   return (
-    <div className="terminal-screen w-full md:w-[90%] max-w-5xl mx-auto my-8">
+    <div className="terminal-screen w-full h-full mx-auto">
       <div className="bg-gray-800 px-4 py-2 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -204,11 +200,11 @@ const Terminal = () => {
         <div className="text-xs text-gray-300">developer@terminal-portfolio</div>
       </div>
       
-      <div className="relative">
+      <div className="relative h-[calc(100%-2.5rem)]">
         <div className="scanline animate-scanline"></div>
         <div className="crt"></div>
         
-        <div className="terminal-content animate-screen-flicker" ref={outputRef}>
+        <div className="terminal-content animate-screen-flicker h-full" ref={outputRef}>
           {bootSequence ? (
             <BootSequence />
           ) : (
